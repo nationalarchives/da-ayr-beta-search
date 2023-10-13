@@ -1,7 +1,7 @@
 import unittest
 import json
 
-import parameter
+from source import parameter
 import lambda_function
 
 # run following command to perform unit testing on all test cases
@@ -59,6 +59,7 @@ class TestLambdaFunction(unittest.TestCase):
         result = json.loads(
             json.dumps(lambda_function.lambda_handler(event=lambda_event, context=""))
         )
+        print(result['body'])
         self.assertEqual(result["statusCode"], 200)
 
     def test_lambda_function_failed_response_without_value_parameter(
@@ -88,5 +89,5 @@ class TestLambdaFunction(unittest.TestCase):
         self.assertEqual(result["statusCode"], 400)
 
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#    unittest.main()
